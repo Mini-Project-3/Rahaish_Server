@@ -5,6 +5,8 @@ if (process.env.NODE_ENV !== "production") {
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const userRoute = require('./routes/user');
+const { db_url } = require('./Constants/constants');
 
 const app = express();
 
@@ -14,7 +16,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const Connection = async () => {
-    const db_url = "mongodb+srv://ayush:rahaish3@rahaish.hplmj.mongodb.net/Rahaish?retryWrites=true&w=majority";
     try {
         await mongoose.connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true });
         console.log("Database Connected Successfully");
@@ -26,6 +27,7 @@ const Connection = async () => {
 
 Connection();
 
+app.use('/', userRoute);
 app.get('/', (req, res) => {
     res.json({ message: "Root route" });
 });
