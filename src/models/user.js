@@ -6,19 +6,19 @@ const UserSchema = new Schema({
     email: {
         type: String,
         unique: true,
-        require: true
+        required: true
     },
     firstName: {
         type: String,
-        require: true,
+        required: true,
     },
     lastName: {
         type: String,
-        require: true
+        required: true
     },
     password: {
         type: String,
-        require: true
+        required: true
     }
 });
 
