@@ -5,6 +5,7 @@ if (process.env.NODE_ENV !== "production") {
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const autoIncrement = require('mongoose-auto-increment');
 const userRoute = require('./routes/user');
 const houseRoute = require('./routes/house');
 const { db_url } = require('./Constants/constants');
@@ -18,7 +19,8 @@ app.use(express.json());
 
 const Connection = async () => {
     try {
-        await mongoose.connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true });
+        const connection = await mongoose.connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true });
+        autoIncrement.initialize(connection);
         console.log("Database Connected Successfully");
     }
     catch (err) {
