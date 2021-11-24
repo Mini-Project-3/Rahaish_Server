@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const userRoute = require('./routes/user');
 const houseRoute = require('./routes/house');
+const plotRoute = require('./routes/plot');
+const flatRoute = require('./routes/flat');
 const { db_url } = require('./Constants/constants');
 
 const app = express();
@@ -30,6 +32,8 @@ Connection();
 
 app.use('/', userRoute);
 app.use("/", houseRoute);
+app.use("/", plotRoute);
+app.use("/", flatRoute);
 app.get('/', (req, res) => {
     res.json({ message: "Root route" });
 });
