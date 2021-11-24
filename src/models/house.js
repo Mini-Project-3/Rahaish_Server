@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 const Schema = mongoose.Schema;
 
 const HouseSchema = new Schema({
+    user_id: {
+        type: Number,
+        required: true
+    },
     name: {
         type: String,
         required: true,
@@ -59,5 +64,13 @@ const HouseSchema = new Schema({
         required: true
     }
 })
+
+autoIncrement.initialize(mongoose.connection);
+HouseSchema.plugin(autoIncrement.plugin, {
+    model: 'House',
+    field: 'house_id',
+    startAt: 1,
+    incrementBy: 1
+});
 
 module.exports = mongoose.model("House", HouseSchema);
