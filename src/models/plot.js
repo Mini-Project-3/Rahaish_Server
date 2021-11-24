@@ -10,18 +10,26 @@ const PlotSchema = new Schema({
         type: Number,
         required: true,
     },
+    address: {
+        type: String,
+        required: true,
+    },
+    city: {
+        type: String,
+        required: true,
+    },
+    contact: {
+        type: String,
+        required: true,
+    },
     area: {
         type: Number,
         required: true
     },
-    images: {
-        type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
-    },
+    // images: {
+    //     type: String,
+    //     required: true
+    // },
     status: {
         type: String,
         required: true
@@ -37,7 +45,11 @@ const PlotSchema = new Schema({
     noOfOpenSide: {
         type: String,
         required: true
-    }
+    },
+    description: {
+        type: String,
+        required: true
+    },
 })
 
 module.exports = mongoose.model("user", PlotSchema);

@@ -7,8 +7,8 @@ const HouseSchema = new Schema({
         required: true,
     },
     price: {
-        type: Number,
-        // required: true,
+        type: String,
+        required: true,
     },
     address: {
         type: String,
@@ -24,18 +24,14 @@ const HouseSchema = new Schema({
     },
     area: {
         type: Number,
-        // required: true
+        required: true
     },
     // images: {
     //     type: String,
     //     required: true
     // },
-    description: {
-        type: String,
-        required: true
-    },
-    status: {
-        type: String,
+    floor: {
+        type: Number,
         required: true
     },
     bedroom: {
@@ -46,8 +42,8 @@ const HouseSchema = new Schema({
         type: Number,
         required: true
     },
-    floor: {
-        type: Number,
+    status: {
+        type: String,
         required: true
     },
     facing: {
@@ -56,7 +52,11 @@ const HouseSchema = new Schema({
     },
     furnishing: {
         type: String,
-        // required: true
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
     }
 })
 

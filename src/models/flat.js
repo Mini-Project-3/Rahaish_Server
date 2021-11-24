@@ -1,29 +1,37 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const RentSchema = new Schema({
+const FlatSchema = new Schema({
     name: {
         type: String,
         required: true,
     },
-    price: {
-        type: Number,
+    rentPrice: {
+        type: String,
+        required: true,
+    },
+    address: {
+        type: String,
+        required: true,
+    },
+    city: {
+        type: String,
+        required: true,
+    },
+    contact: {
+        type: String,
         required: true,
     },
     area: {
         type: Number,
         required: true
     },
-    images: {
-        type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
-    },
-    status: {
-        type: String,
+    // images: {
+    //     type: String,
+    //     required: true
+    // },
+    floor: {
+        type: Number,
         required: true
     },
     bedroom: {
@@ -34,18 +42,18 @@ const RentSchema = new Schema({
         type: Number,
         required: true
     },
-    floor: {
-        type: Number,
-        required: true
-    },
-    facing: {
+    status: {
         type: String,
         required: true
     },
     furnishing: {
         type: String,
         required: true
+    },
+    description: {
+        type: String,
+        required: true
     }
 })
 
-module.exports = mongoose.model("user", RentSchema);
+module.exports = mongoose.model("user", FlatSchema);
