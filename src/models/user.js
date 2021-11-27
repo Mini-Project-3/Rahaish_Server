@@ -21,9 +21,24 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    house: {
-        type: Array
-    },
+    house: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "House"
+        }
+    ],
+    flat: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Flat"
+        }
+    ],
+    plot: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Plot"
+        }
+    ]
 });
 
 UserSchema.plugin(passportLocalMongoose);

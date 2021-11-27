@@ -1,7 +1,16 @@
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 const Schema = mongoose.Schema;
 
 const PlotSchema = new Schema({
+    owner_id: {
+        type: Number,
+        required: true
+    },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    },
     name: {
         type: String,
         required: true,
@@ -26,14 +35,6 @@ const PlotSchema = new Schema({
         type: Number,
         required: true
     },
-    // images: {
-    //     type: String,
-    //     required: true
-    // },
-    status: {
-        type: String,
-        required: true
-    },
     length: {
         type: Number,
         required: true
@@ -42,7 +43,11 @@ const PlotSchema = new Schema({
         type: Number,
         required: true
     },
-    noOfOpenSide: {
+    status: {
+        type: String,
+        required: true
+    },
+    openFaces: {
         type: String,
         required: true
     },
@@ -50,6 +55,18 @@ const PlotSchema = new Schema({
         type: String,
         required: true
     },
+    // images: {
+    //     type: String,
+    //     required: true
+    // },
 })
 
-module.exports = mongoose.model("user", PlotSchema);
+autoIncrement.initialize(mongoose.connection);
+PlotSchema.plugin(autoIncrement.plugin, {
+    model: 'Plot',
+    field: 'plot_id',
+    startAt: 1,
+    incrementBy: 1
+});
+
+module.exports = mongoose.model("Plot", PlotSchema);

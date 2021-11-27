@@ -3,9 +3,13 @@ const autoIncrement = require('mongoose-auto-increment');
 const Schema = mongoose.Schema;
 
 const HouseSchema = new Schema({
-    user_id: {
+    owner_id: {
         type: Number,
         required: true
+    },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
     },
     name: {
         type: String,

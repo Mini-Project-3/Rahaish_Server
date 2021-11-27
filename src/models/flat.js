@@ -1,12 +1,21 @@
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 const Schema = mongoose.Schema;
 
 const FlatSchema = new Schema({
+    owner_id: {
+        type: Number,
+        required: true
+    },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    },
     name: {
         type: String,
         required: true,
     },
-    rentPrice: {
+    rent: {
         type: String,
         required: true,
     },
@@ -26,10 +35,6 @@ const FlatSchema = new Schema({
         type: Number,
         required: true
     },
-    // images: {
-    //     type: String,
-    //     required: true
-    // },
     floor: {
         type: Number,
         required: true
@@ -54,6 +59,18 @@ const FlatSchema = new Schema({
         type: String,
         required: true
     }
+    // images: {
+    //     type: String,
+    //     required: true
+    // },
 })
 
-module.exports = mongoose.model("user", FlatSchema);
+autoIncrement.initialize(mongoose.connection);
+FlatSchema.plugin(autoIncrement.plugin, {
+    model: 'Flat',
+    field: 'flat_id',
+    startAt: 1,
+    incrementBy: 1
+});
+
+module.exports = mongoose.model("Flat", FlatSchema);
