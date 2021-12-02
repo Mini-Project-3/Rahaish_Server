@@ -4,6 +4,10 @@ const autoIncrement = require('mongoose-auto-increment');
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const UserSchema = new Schema({
+    username: {
+        type: String,
+        default: "abc",
+    },
     email: {
         type: String,
         unique: true,

@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const autoIncrement = require('mongoose-auto-increment');
 const Schema = mongoose.Schema;
 
+
 const PlotSchema = new Schema({
     owner_id: {
         type: Number,
@@ -16,7 +17,7 @@ const PlotSchema = new Schema({
         required: true,
     },
     price: {
-        type: Number,
+        type: String,
         required: true,
     },
     address: {
