@@ -45,7 +45,7 @@ router.get('/all-plots', async (req, res) => {
 });
 
 router.get('/plot-one', async (req, res) => {
-    const plot_id = req.query.house_id;
+    const plot_id = req.query.plot_id;
 
     await Plot.findOne({ plot_id: plot_id }).populate({ path: "owner", select: "firstName lastName email" }).then((plot) => {
         return res.status(200).json(plot);
